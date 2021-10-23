@@ -1,0 +1,13 @@
+- hosts: localhost
+
+  tasks:
+    - name: Display a gathered fact - OS Distribution
+      debug:
+        var: ansible_distribution
+
+    - name: Clear the gathered facts
+      meta: clear_facts
+
+    - name: Attempt to display the fact once more
+      debug:
+        var: ansible_distribution

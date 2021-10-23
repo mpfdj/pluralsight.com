@@ -1,0 +1,11 @@
+- hosts: localhost
+  vars:
+    - my_param: 1
+
+  tasks:
+    - fail:
+        msg: "fails because 'my_param' equals to 1"
+      when: my_param == 1
+
+    - debug:
+        msg: "you should not see this message!"

@@ -1,0 +1,10 @@
+- hosts: localhost
+  
+  # ansible_facts is a dictionary
+  
+  tasks:
+    - debug:
+        msg: "{{ ansible_facts }}"
+        
+    - debug:
+        msg: "Hostname is {{ ansible_facts['hostname'] }}"

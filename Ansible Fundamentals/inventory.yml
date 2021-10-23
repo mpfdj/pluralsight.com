@@ -1,0 +1,15 @@
+---
+all:
+  # single hosts
+  hosts:
+    miels_host1:
+      ansible_connection: local
+  # host groups
+  children:
+    miels_servers:
+      hosts:
+        miels_host2:
+          ansible_connection: local
+
+
+# https://stackoverflow.com/questions/58929351/how-to-pair-hosts-with-variables-in-ansible

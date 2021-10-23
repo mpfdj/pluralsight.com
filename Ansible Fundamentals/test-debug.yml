@@ -1,0 +1,15 @@
+- hosts: localhost
+  tasks:
+    - name: list /tmp
+      command: ls -lha
+      args:
+        chdir: /tmp
+      register: result
+
+    # print a variable
+    - debug:
+        var: result
+
+    # same output as above
+    - debug:
+        msg: "{{ result }}"

@@ -1,0 +1,14 @@
+- hosts: localhost
+  vars:
+    - my_param: 1
+
+  tasks:
+    - name: assert my_param equals 0
+      assert:
+        that:
+          - my_param == 0
+        fail_msg: "fails because 'my_param' doesn't equal to 0"
+        success_msg: "success because 'my_param' equals 1"
+
+    - debug:
+        msg: "you should not see this message!"

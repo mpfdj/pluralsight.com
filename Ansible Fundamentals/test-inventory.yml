@@ -1,0 +1,13 @@
+- hosts: miels_host1
+  tasks:
+    - debug:
+        msg:
+          - "hello from host1 {{ hello_from_host1 }}"
+
+- hosts: miels_servers
+  tasks:
+    - debug:
+        msg:
+          - "hello from all {{ hello_from_all }}"
+          - "hello from miels servers {{ hello_from_miels_servers }}"
+          - "hello from miels host2 {{ hello_from_miels_host2 }}"

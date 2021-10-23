@@ -1,0 +1,30 @@
+- hosts: localhost
+#  strategy: debug
+  vars:
+    leesplankje_dict: 
+      miel:
+        aap: Hello aap
+        noot: Hello noot
+      kim:
+        mies: Hello mies
+    
+    leesplankje_list:
+      - aap
+      - noot
+      - mies
+      
+  tasks:
+    - debug:
+        msg: "Reading data from dictionary: {{ leesplankje_dict['miel']['aap'] }}"
+        
+    - debug:
+        msg: "Reading data from list {{ item }}"    
+      loop: "{{ leesplankje_list }}"
+      
+    # with_dict is not working here don't know why...  
+    - debug:
+        msg: "{{ item.woordje }} en nu met hoofdletters {{ item.woordje_uppercase }}"
+      loop:
+        - { woordje: 'aap', woordje_uppercase: 'AAP' }
+        - { woordje: 'noot', woordje_uppercase: 'NOOT' }
+        - { woordje: 'mies', woordje_uppercase: 'MIES' }
