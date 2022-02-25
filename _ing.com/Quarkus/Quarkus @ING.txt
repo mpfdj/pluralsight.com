@@ -1,0 +1,61 @@
+Quarkus Deep Dive
+
+http://dn.dev/quarkus-tutorial
+https://github.com/redhat-developer-demos/quarkus-tutorial/
+
+
+quarkus / maven profiles?
+
+
+# Video
+
+https://web.microsoftstream.com/video/78400daa-7940-4953-a6cf-9aaaea9452a2
+https://web.microsoftstream.com/video/2a6cebdb-a927-4d07-89a5-f925392386d3
+https://web.microsoftstream.com/video/c78dee9e-0bfc-47e5-b782-0645a9585598
+https://ing-my.sharepoint.com/personal/miriam_rosentvaig_ing_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmiriam%5Frosentvaig%5Fing%5Fcom%2FDocuments%2FOpnamen%2FMeet%20the%20champions%2D20220224%5F110148%2DMeeting%20Recording%2Emp4&parent=%2Fpersonal%2Fmiriam%5Frosentvaig%5Fing%5Fcom%2FDocuments%2FOpnamen
+
+> more resources / books are mentioned end of video
+https://smallrye.io/smallrye-reactive-messaging/smallrye-reactive-messaging/
+
+
+Rosentvaig, M. (Miriam) @ ING Learn (voor de video)
+
+
+# Docker portforwarding
+https://stackoverflow.com/questions/39525820/docker-port-forwarding-not-working
+https://docs.docker.com/engine/reference/commandline/inspect/
+
+
+# Quarkus Docker Image
+https://github.com/quarkusio/quarkus-images
+https://github.com/quarkusio/quarkus-images/blob/main/modules/quarkus-maven-scripts/README.md
+https://www.graalvm.org/release-notes/
+
+docker pull quay.io/quarkus/centos-quarkus-maven:22.0.0-java11
+docker run -it -p 8080:8080 -v C:/miel/workspace/infra/quarkus/quarkus-tutorial/work:/work quay.io/quarkus/centos-quarkus-maven:22.0.0-java11 bash
+docker run -it -p 8080:8080 -v C:/miel/workspace/infra/quarkus/quarkus-tutorial/work/hello-quarkus:/project quay.io/quarkus/centos-quarkus-maven:22.0.0-java11 mvn compile quarkus:dev
+
+
+# Create a Quarkus app
+mvn "io.quarkus:quarkus-maven-plugin:create" -DprojectGroupId="com.redhat.developers" -DprojectArtifactId="tutorial-app" -DprojectVersion="1.0-SNAPSHOT" -DclassName="HelloResource" -Dpath="hello"
+
+mvn io.quarkus.platform:quarkus-maven-plugin:2.7.0.Final:create -DprojectGroupId=jaeger.de.miel -DprojectArtifactId=hello-quarkus
+
+mvn package
+java -jar target/quarkus-app/quarkus-run.jar
+
+
+
+./mvnw compile quarkus:dev
+
+
+# Add extension
+mvn quarkus:add-extension -Dextension="quarkus-resteasy-jsonb, quarkus-jdbc-h2, quarkus-hibernate-orm-panache, quarkus-smallrye-openapi"
+
+
+
+
+
+#------------------------
+
+dn.dev/quarkusmaster

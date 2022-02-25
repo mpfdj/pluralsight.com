@@ -1,5 +1,22 @@
 https://github.com/hhimanshu/scala-the-big-picture
 
+
+
+https://www.geeksforgeeks.org/monads-in-scala/
+https://bartoszgajda.com/2020/02/23/monads-in-scala-by-example/
+https://dev.to/codenoodle/don-t-read-this-monad-tutorial-2cfc
+https://stackoverflow.com/questions/44965/what-is-a-monad
+
+# https://docs.scala-lang.org/tour/variances.html
+For this example we’ll use the literal notation A => B to represent a Function1[A, B]
+
+
+
+
+
+
+
+
 # Monads - Part 1 - What is a #Monad?
 https://www.youtube.com/watch?v=FZAmPhjV11A
 
