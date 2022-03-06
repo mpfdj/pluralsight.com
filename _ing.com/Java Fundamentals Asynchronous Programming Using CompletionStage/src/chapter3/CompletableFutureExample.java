@@ -16,6 +16,10 @@ public class CompletableFutureExample
         Runnable runnableTask = () -> System.out.println("Hello runnable");
         CompletableFuture<Void> completableFuture1 = CompletableFuture.runAsync(runnableTask);  // The CompletableFuture.runAsync only works with Runnables
 
+
+
+        // CompletableFuture doesn't support Callable use a Supplier instead
+        // Note: a Supplier doesn't accept any Checked Exceptions, that's the main difference with the Callable interface
         Supplier<String> supplierTask = () -> "Hello supplier";
         CompletableFuture<String> completableFuture2 = CompletableFuture.supplyAsync(supplierTask);
         System.out.println(completableFuture2.get());

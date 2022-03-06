@@ -3,10 +3,10 @@ https://www.youtube.com/user/jpaumard
 twitter: @JosePaumard
 
 Runnable
-Supplier<T>    T get();
-Consumer<T>    void accept(T t);
-Predicate<T>   boolean test(T t);
-Function<T,R>  R apply(T t);
+Supplier<T>
+Consumer<T>
+Predicate<T>
+Function<T,R>
 
 A Lambda expression implements a Functional Interface
 

@@ -34,7 +34,7 @@ public class DemoAsyncExample4 {
                 return ids.stream().map(User::new).collect(Collectors.toList());
             };
 
-            return CompletableFuture.supplyAsync(userSupplier,executor2);
+            return CompletableFuture.supplyAsync(userSupplier, executor2);
         };
 
         // Simulate a database call which fetches the Emails from a database
@@ -52,8 +52,11 @@ public class DemoAsyncExample4 {
         // Chain of tasks
         CompletableFuture<List<Long>> completableFuture = CompletableFuture.supplyAsync(supplyIDs, executor1);  // This task is executed in the main Thread as no executor Service has been defined (Thread pool) for this task
 
-        CompletableFuture<List<User>> userFuture = completableFuture.thenCompose(fetchUsers);
-        CompletableFuture<List<Email>> emailFuture = completableFuture.thenCompose(fetchEmails);
+
+
+
+        CompletableFuture<List<User>> userFuture = completableFuture.thenComposeAsync(fetchUsers);
+        CompletableFuture<List<Email>> emailFuture = completableFuture.thenComposeAsync(fetchEmails);
 
         // The BiConsumer is executed when both the user and email futures are completed
         userFuture.thenAcceptBoth(emailFuture,
@@ -64,7 +67,9 @@ public class DemoAsyncExample4 {
         // Wait 1 second so we can display the results
 //        sleep(4_000);
 
-        completableFuture.join();
+        userFuture.join();
+        emailFuture.join();
+//        completableFuture.join();
 
         executor1.shutdown();
         executor2.shutdown();

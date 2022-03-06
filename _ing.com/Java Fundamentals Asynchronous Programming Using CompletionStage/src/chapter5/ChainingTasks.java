@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -15,14 +16,19 @@ import java.util.stream.Collectors;
 public class ChainingTasks {
     private static List<User> myList = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         // Chain tasks pass result from one task to the next
-        // https://stackoverflow.com/questions/43019126/completablefuture-thenapply-vs-thencompose#:~:text=thenCompose()%20is%20better%20for,one%20use%20case%20then%20other.
+        // https://www.baeldung.com/java-completablefuture
+        // https://www.baeldung.com/java-9-completablefuture
         CompletableFuture<Void> start = new CompletableFuture<>();
         start.thenCompose(nil -> getUserIDs())
+                .exceptionally(e -> List.of(-1L))
                 .thenCompose(ids -> getUsers(ids))
-                .thenApply(users -> myList.addAll(users));
+                .exceptionally(e -> List.of(new User(-1L)))
+//                .thenApply(ids -> getUsers(ids))  // CompletableFuture<CompletableFuture<List<User>>>
+                .thenAccept(users -> composeMyList(users))
+                .thenRun(() -> System.out.println("CompletableFuture is done!"));
 
         start.complete(null);
 
@@ -31,9 +37,12 @@ public class ChainingTasks {
         System.out.println(myList);
 
 
-
     }
 
+
+    private static void composeMyList(List<User> users) {
+        myList.addAll(users);
+    }
 
     // Simulate an API call which fetches the User ID's
     private static CompletableFuture<List<Long>> getUserIDs() {

@@ -8,9 +8,12 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+
+// Demo with chain of tasks
 public class DemoAsyncExampleIntroduction {
 
     public static void main(String[] args) {
+
         // Simulate an API call which fetches the User ID's
         Supplier<List<Long>> supplyIDs = () -> {
             sleep(200);

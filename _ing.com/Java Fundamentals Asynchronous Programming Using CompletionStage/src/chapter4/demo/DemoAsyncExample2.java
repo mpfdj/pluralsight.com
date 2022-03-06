@@ -46,9 +46,9 @@ public class DemoAsyncExample2 {
         // Chain of tasks
         CompletableFuture<List<Long>> completableFuture = CompletableFuture.supplyAsync(supplyIDs);  // This task is executed in the main Thread as no executor Service has been defined (Thread pool) for this task
 
-        completableFuture.thenCompose(fetchUsers)      // Is equivalent of the flatMap of the Stream API. This task is executed in the main Thread as no executor Service has been defined (Thread pool) for this task
+        completableFuture.thenCompose(fetchUsers)        // Is equivalent of the flatMap of the Stream API. This task is executed in the main Thread as no executor Service has been defined (Thread pool) for this task
 //                .thenAcceptAsync(displayer,executor);  // This task runs in a separate Thread
-                .thenAcceptAsync(displayer);  // This task runs in the main Thread
+                .thenAcceptAsync(displayer);             // This task runs in the main Thread
 
 
         // Wait 1 second so we can display the results

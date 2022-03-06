@@ -73,12 +73,12 @@ Option
 
 
 Try
-- Success (value)
+- Succes (value)
 - Failure (error)
 
 Either
-- For example Either[String, Int]
-- Left (something) represents the absence of a value
+- For exmaple Either[String, Int]
+- Left (something) represents the abscene of a value
 - Right (value) represents the value of the computation
 
 

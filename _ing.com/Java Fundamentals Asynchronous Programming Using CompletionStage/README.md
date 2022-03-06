@@ -1,10 +1,12 @@
+chapter 3 completing or obtruding
+
 Java Fundamentals Asynchronous Programming Using CompletionStage 
 By Jose Paumard
 https://github.com/JosePaumard
 
 Other courses
 - Applying Concurrency and Multi-threading to common Java patterns
-- From collections to Streams in Java 8 using Lamdba expressions
+- From collections to Streams in Java 8 using Lambda expressions
 - Streams, Collectors and Optionals for Data processing in Java 8
 
 # Introduction
@@ -66,7 +68,6 @@ CompletableFuture.supplyAsync()  // Takes a Supplier
 CompletableFuture is a class that implements:
 - Future interface
 - CompletionStage interface
-- 
 
 Task state:
 - running
@@ -79,10 +80,28 @@ Task state:
 ### CompletableFuture API
 ![image!](img/CompletableFuture.png)
 
+### complete(value)
+![image!](img/complete.png)
+
+### obtrudeValue(value)
+![image!](img/obtrudeValue.png)
+
+### completeExceptionally(throwable) and obtrudeException(throwable)
+![image!](img/completeExceptionally.png)
+
 
 # Chapter 4 Triggering a task on completion of Other tasks
+### CompletableFuture supported tasks
+![image!](img/CFSupportedTasks.png)
+
 Does chaining a Runnable with a Consumer or a Function make sense -> No, because the Runnable returns void (null)
 On the other hand you can chain anything on a Supplier
+
+### thenApply
+![image!](img/thenApply.png)
+
+### thenCompose
+![image!](img/thenCompose.png)
 
 Important pattern is Completable Future Composition
 
@@ -100,6 +119,11 @@ Important pattern is Completable Future Composition
 - whenComplete()
 - handle()
 
+The CompletableFuture can handle exceptions in 3 ways:
+- exceptionally() -> takes a function as a parameter (exception can be swallowed)
+- whenComplete()  -> takes a BiConsumer as a parameter, has an async version
+- handle()        -> takes a BiFunction as a parameter (exception can be swallowed), has an async version
+
 CF.get()
 CF.join()
 
@@ -112,3 +136,5 @@ task:
 create pipelines of asynchronous tasks
 trigger tasks on the completion of other tasks
 
+### Exception Handling
+![image!](img/ExceptionHandling.png)
