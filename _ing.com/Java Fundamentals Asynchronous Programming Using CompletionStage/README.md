@@ -138,3 +138,11 @@ trigger tasks on the completion of other tasks
 
 ### Exception Handling
 ![image!](img/ExceptionHandling.png)
+
+
+Task:
+- Runnable
+- Supplier
+- Consumer
+- Function
+
