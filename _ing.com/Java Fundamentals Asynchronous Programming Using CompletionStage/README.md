@@ -141,8 +141,12 @@ trigger tasks on the completion of other tasks
 
 
 Task:
-- Runnable
-- Supplier
-- Consumer
-- Function
+Chaining:
+- Runnable thenRun()
+- Consumer thenAccept()
+- Function thenApply(), thenCompose()
+
+CompletableFuture
+- Runnable runAsync()
+- Supplier supplyAsync()
 
